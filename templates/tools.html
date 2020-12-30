@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="stylesheet" href="/static/styles2.css">
+
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+{% endblock %}
+
+
+{% block title %}
+    Ferramentas
+{% endblock %}
+
+{% block premain %}{% endblock %}
+
+{% block sidebar %}
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Ferramentas</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Selecione a região</p>
+            <li class="active">
+                <a href="#brainSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Encéfalo</a>
+                <ul class="collapse list-unstyled" id="brainSubmenu">
+                    <li>
+                        <a href="#">ASPECTS</a>
+                    </li>
+                    <li>
+                        <a href="#">Fisher</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#chestSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tórax</a>
+                <ul class="collapse list-unstyled" id="chestSubmenu">
+                    <li>
+                        <a href="#">Fleischner</a>
+                    </li>
+                    <li>
+                        <a href="#">Lung-RADS</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#abdominalSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Abdome</a>
+                <ul class="collapse list-unstyled" id="abdominalSubmenu">
+                    <li>
+                        <a href="/tools/atlanta#atlanta">Atlanta</a>
+                    </li>
+                    <li>
+                        <a href="#">Bosniak</a>
+                    </li>
+                    <li>
+                        <a href="#">Hinchey</a>
+                    </li>
+                    <li>
+                        <a href="#">Cistos pancreáticos</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#extremitiesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Membros</a>
+                <ul class="collapse list-unstyled" id="extremitiesSubmenu">
+                    <li>
+                        <a href="/tools/bankart">Bankart</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#columnSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Coluna vertebral</a>
+                <ul class="collapse list-unstyled" id="columnSubmenu">
+                    <li>
+                        <a href="/tools/modic">Modic</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li>
+                <a href="#">About</a>
+            </li> -->
+        </ul>
+    </nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar2 navbar2-expand-lg navbar2-light bg-light2">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Ferramentas</span>
+                </button>
+            </div>
+        </nav>
+        <header>
+            <div class="titulo">
+                <h1 class="site-title">Ferramentas</h1>
+            </div>
+        </header>
+        <div>
+            {% block bodyTools %}{% endblock %}
+        </div>
+
+    </div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // $(".sidebar").mCustomScrollbar({
+        //     theme: "minimal"
+        // });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('.sidebar, .content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "tools.html" %}
+
+
+{% block bodyTools %}
+
+<header>
+    <div class="titulo">
+        <h2 class="site-title" id="atlanta">Classificação de Atlanta</h1>
+    </div>
+</header>
+
+<div class="table">
+    {% block body %}
+    {{ data|safe }}
+    {% endblock %}  
+</div>
+
+<img class="imageTools" src="/tools/atlanta1.png" alt="Fluxograma avaliação pancreatite aguda">
+
+<div>
+    <h5>Última atualização: 11.10.2020</h5>
+
+    <h5>Referências</h5>
+    <li>Banks PA, Bollen TL, Dervenis C et-al. Classification of acute pancreatitis-2012: revision of the Atlanta classification and definitions by international consensus. Gut. 2012;62 (1): 102-11. doi:10.1136/gutjnl-2012-302779</li>
+    <li>Bryan R. Foster, Kyle K. Jensen, Gene Bakis, Akram M. Shaaban, Fergus V. Coakley. Revised Atlanta Classification for Acute Pancreatitis: A Pictorial Essay. (2016) RadioGraphics. 36 (3): 675-87. doi:10.1148/rg.2016150097</li>
+    
+</div>
+
+{% endblock %}
