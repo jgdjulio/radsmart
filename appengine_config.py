@@ -9,3 +9,4 @@ Jinja2
 virtualenv
 Werkzeug
 tablib
+gunicorn
