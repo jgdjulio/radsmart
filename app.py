@@ -175,3 +175,45 @@ def errorhandler(e):
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
 '''
+
+@app.errorhandler(400)
+def handle_400_error(_error):
+    """Return a http 400 error to client"""
+    return make_response(jsonify({'error': 'Misunderstood'}), 400)
+
+
+@app.errorhandler(401)
+def handle_401_error(_error):
+    """Return a http 401 error to client"""
+    return make_response(jsonify({'error': 'Unauthorised'}), 401)
+
+
+@app.errorhandler(404)
+def handle_404_error(_error):
+    """Return a http 404 error to client"""
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
+
+@app.errorhandler(500)
+def handle_500_error(_error):
+    """Return a http 500 error to client"""
+    return make_response(jsonify({'error': 'Server error'}), 500)
+
+
+if __name__ == '__main__':
+
+    PARSER = argparse.ArgumentParser(
+        description="Seans-Python-Flask-REST-Boilerplate")
+
+    PARSER.add_argument('--debug', action='store_true',
+                        help="Use flask debug/dev mode with file change reloading")
+    ARGS = PARSER.parse_args()
+
+    PORT = int(os.environ.get('PORT', 5000))
+
+    if ARGS.debug:
+        print("Running in debug mode")
+        CORS = CORS(APP)
+        APP.run(host='0.0.0.0', port=PORT, debug=True)
+    else:
+        APP.run(host='0.0.0.0', port=PORT, debug=False)
